@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    background-color: black;
+
+}
+
+.content {
+    font-family: sans-serif;
+}
+
+.header_info {
+    position: absolute;
+    margin-top: 50px;
+    font-family: sans-serif;
+    color: white;
+}
+
+.header_info a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.respons {
+    width: 250px;
+    height: 110px;
+
+}
+
+.menu {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: black;
+}
+
+.menu a {
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 20px;
+    color: white;
+    padding: 10px 20px;
+    background-color: black;
+    display: block;
+    margin-left: 5px;
+}
+.login{
+    color: white;
+    font-family: sans-serif;
+    margin-left: 25px;
+}
+.login a{
+    color: gainsboro;
+    font-family: sans-serif;
+    margin-left: 10px;
+
+}
+.content h2, p {
+    font-family: sans-serif;
+}
+
+.cont {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cont .h2, a {
+    text-decoration: none;
+    color: black;
+}
+
+.newsBlock {
+    margin-top: 30px;
+    margin-left: 5px;
+    display: block;
+    padding: 8px 8px;
+    width: 300px;
+
+}
+
+.newsLongBlock {
+    margin-top: 20px;
+    display: block;
+    padding: 8px 8px;
+    width: 1000px;
+}
+
+.newsImage {
+    width: 200px;
+    height: 200px;
+    margin-left: 10px;
+}
+
+.newsBigImage {
+    width: 800px;
+    height: 500px;
+}
+
+.text-field {
+    margin-bottom: 1rem;
+}
+
+/* стили для label */
+.text-field__label {
+    margin-left: 5px;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+/* стили для input */
+.text-field__input {
+    margin-left: 5px;
+    display: block;
+    width: 200px;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.text-bigfield__label{
+    margin-left: 5px;
+    display: block;
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.text-field__input:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+}
+
+.text-field__input:disabled,
+.text-field__input[readonly] {
+    background-color: #f5f5f5;
+    opacity: 1;
+}
+
+
