@@ -41,11 +41,13 @@ $newsResult = mysqli_query($conn, $newsSelect);
                 foreach ($newsResult as $newrow) {
 
                 ?>
-
+                    <p><a href="../index.php">На главную</a></p>
                     <label class="text-field__label" for="title">Заголовок</label>
                     <?php echo "<p>" . "<input type='text' class='text-field__input' name='title' value='" . $newrow["title"] . "'>" . "<p>"; ?>
                     <label class="text-field__label" for="titleNew">Выберите изображение для статьи</label>
                     <p><input type="file" name="filename" size="10"></p>
+                    <label class="text-field__label" for="titleNew">Введите короткое описание статьи</label>
+                    <?php echo "<textarea name='shortdesc' cols='25' rows='5' class='text-bigfield__label'"  . ">". $newrow["shortdesc"] ."</textarea>"; ?>
                     <label class="text-field__label" for="titleNew">Введите описание статьи</label>
                     <?php echo "<textarea name='longdesc' cols='55' rows='25' class='text-bigfield__label'" . $newrow["longdesc"] .
                         "</textarea>"; ?>
@@ -64,7 +66,7 @@ $newsResult = mysqli_query($conn, $newsSelect);
             </form>
             <?php
             if (
-                isset($_POST["title"]) && isset($_POST["longdesc"])  && isset($_POST["autor_name"])
+                isset($_POST["title"]) && isset($_POST["longdesc"]) && isset($_POST["shortdesc"])  && isset($_POST["autor_name"])
                 && isset($_POST["type"]) && $_FILES && $_FILES["filename"]["error"] == UPLOAD_ERR_OK
             ) {
                 $name = $_FILES["filename"]["name"];
@@ -73,9 +75,11 @@ $newsResult = mysqli_query($conn, $newsSelect);
                 move_uploaded_file($_FILES["filename"]["tmp_name"], $path . $name);
                 $title = $_POST["title"];
                 $longdesc = $_POST["longdesc"];
+                $shortdesc = $_POST["shortdesc"];
                 $autor_name = $_POST["autor_name"];
                 $type = $_POST["type"];
-                $newsAdd = "UPDATE `news` SET `title`='$title', `image`='$name', `longdesc`='$longdesc', `date`=NOW(), `autor_name`='$autor_name', `type`='$type' WHERE id ='$newred'";
+                $newsAdd = "UPDATE `news` SET `title`='$title', `image`='$name', `longdesc`='$longdesc', `date`=NOW(),
+                `autor_name`='$autor_name', `type`='$type', `shortdesc`='$shortdesc' WHERE id ='$newred'";
                 if ($conn->query($newsAdd)) {
                     echo "<script>alert(\"Новость изменена\");</script>";
                 } else {

@@ -94,6 +94,7 @@ $newsTitleSelect = mysqli_query($conn, $newsTitleSelect);
                         //в a href='index.php?newsid' присваиваем get запросу newsid(название может быть любым) значение id новости
                         //на 8-ой строке записываем в переменную с проверкой на сущестование
                         //на 17-ой делаем выборку по id новости
+                        echo "<p>"  . $newsTitleRow['shortdesc'] .  "</p>";
                         echo "<p>"  . $newsTitleRow['date'] .  "</p>";
                         echo "<p>"  . $newsTitleRow['autor_name'] .  "</p>";
                         echo "</div>";
@@ -118,6 +119,7 @@ $newsTitleSelect = mysqli_query($conn, $newsTitleSelect);
                         //в a href='index.php?newsid' присваиваем get запросу newsid(название может быть любым) значение id новости
                         //на 8-ой строке записываем в переменную с проверкой на сущестование
                         //на 17-ой делаем выборку по id новости
+                        echo "<p>"  . $newsTitleRow['shortdesc'] .  "</p>";
                         echo "<p>"  . $newsTitleRow['date'] .  "</p>";
                         echo "<p>"  . $newsTitleRow['autor_name'] .  "</p>";
                         echo "</div>";
@@ -142,6 +144,7 @@ $newsTitleSelect = mysqli_query($conn, $newsTitleSelect);
                         //в a href='index.php?newsid' присваиваем get запросу newsid(название может быть любым) значение id новости
                         //на 8-ой строке записываем в переменную с проверкой на сущестование
                         //на 17-ой делаем выборку по id новости
+                        echo "<p>"  . $newsTitleRow['shortdesc'] .  "</p>";
                         echo "<p>"  . $newsTitleRow['date'] .  "</p>";
                         echo "<p>"  . $newsTitleRow['autor_name'] .  "</p>";
                         echo "</div>";
@@ -166,6 +169,7 @@ $newsTitleSelect = mysqli_query($conn, $newsTitleSelect);
                         //в a href='index.php?newsid' присваиваем get запросу newsid(название может быть любым) значение id новости
                         //на 8-ой строке записываем в переменную с проверкой на сущестование
                         //на 17-ой делаем выборку по id новости
+                        echo "<p>"  . $newsTitleRow['shortdesc'] .  "</p>";
                         echo "<p>"  . $newsTitleRow['date'] .  "</p>";
                         echo "<p>"  . $newsTitleRow['autor_name'] .  "</p>";
                         echo "</div>";
@@ -190,6 +194,7 @@ $newsTitleSelect = mysqli_query($conn, $newsTitleSelect);
                         //в a href='index.php?newsid' присваиваем get запросу newsid(название может быть любым) значение id новости
                         //на 8-ой строке записываем в переменную с проверкой на сущестование
                         //на 17-ой делаем выборку по id новости
+                        echo "<p>"  . $newsRow['shortdesc'] .  "</p>";
                         echo "<p>"  . $newsRow['date'] .  "</p>";
                         echo "<p>"  . $newsRow['autor_name'] .  "</p>";
                         echo "</div>";

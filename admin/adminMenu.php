@@ -17,6 +17,8 @@ if (isset($_POST["login"]) && isset($_POST["password"]) && !isset($_SESSION["adm
         $hash = $authAssoc['password'];
         if (password_verify($_POST['password'], $hash)) {
             $adminid = $authAssoc['id'];
+            $adminlogin = $authAssoc['login'];
+            $_SESSION["login"] = $adminlogin;
             $_SESSION["adminid"] = $adminid;
             echo "Авторизация успешна";
         } else {
@@ -101,10 +103,10 @@ if (isset($_POST["login"]) && isset($_POST["password"]) && !isset($_SESSION["adm
                         <p><input type="text" class="text-field__input" name="title"></p>
                         <label class="text-field__label" for="titleNew">Выберите изображение для статьи</label>
                         <p><input type="file" name="filename" size="10"></p>
+                        <label class="text-field__label" for="titleNew">Введите короткое описание статьи</label>
+                        <textarea name="shortdesc" cols="25" rows="5" class="text-bigfield__label"></textarea>
                         <label class="text-field__label" for="titleNew">Введите описание статьи</label>
                         <textarea name="longdesc" cols="55" rows="25" class="text-bigfield__label"></textarea>
-                        <label class="text-field__label" for="titleNew">Введите имя автора</label>
-                        <p><input type="text" class="text-field__input" name="autor_name"></p>
                         <label class="text-field__label" for="titleNew">Введите тип статьи</label>
                         <p><input type="text" class="text-field__input" name="type"></p>
                         <br>
@@ -112,7 +114,7 @@ if (isset($_POST["login"]) && isset($_POST["password"]) && !isset($_SESSION["adm
                     </form>
                     <?php
                     if (
-                        isset($_POST["title"]) && isset($_POST["longdesc"])  && isset($_POST["autor_name"])
+                        isset($_POST["title"]) && isset($_POST["longdesc"]) && isset($_POST["shortdesc"])
                         && isset($_POST["type"]) && $_FILES && $_FILES["filename"]["error"] == UPLOAD_ERR_OK
                     ) {
                         $name = $_FILES["filename"]["name"];
@@ -121,10 +123,15 @@ if (isset($_POST["login"]) && isset($_POST["password"]) && !isset($_SESSION["adm
                         move_uploaded_file($_FILES["filename"]["tmp_name"], $path . $name);
                         $title = $_POST["title"];
                         $longdesc = $_POST["longdesc"];
-                        $autor_name = $_POST["autor_name"];
+                        $currentID = $_SESSION["adminid"];
+                        $loginSelect = "SELECT login FROM `admins` WHERE id = '$currentID'";
+                        $loginResult = mysqli_query($conn, $loginSelect);
+                        $loginFetch = mysqli_fetch_array($loginResult);
+                        $autor = $loginFetch['login'];
                         $type = $_POST["type"];
-                        $newsAdd = "INSERT INTO `news` (`title`, `image`, `longdesc`, `date`, `autor_name`, `type`)
-                        VALUES ('$title', '$name', '$longdesc', NOW(),'$autor_name', '$type')";
+                        $shortdesc = $_POST["shortdesc"];
+                        $newsAdd = "INSERT INTO `news` (`title`, `image`, `longdesc`, `date`, `autor_name`, `type`, `shortdesc`)
+                        VALUES ('$title', '$name', '$longdesc', NOW(),'$autor', '$type', '$shortdesc')";
                         if ($conn->query($newsAdd)) {
                             echo "<script>alert(\"Новость добавлена\");</script>";
                         } else {
@@ -144,6 +151,7 @@ if (isset($_POST["login"]) && isset($_POST["password"]) && !isset($_SESSION["adm
                         echo "<div class='newsBlock'>";
                         echo "<img class='newsImage' src='../img/" . $newsRow['image'] . "' alt=''>";
                         echo "<h2>" . "<a href='index.php?newsid=" . $newsRow['id'] . "'>" . $newsRow['title'] . "</a>" .  "</h2>";
+                        echo "<p>"  . $newsRow['shortdesc'] .  "</p>";
                         echo "<p>"  . $newsRow['date'] .  "</p>";
                         echo "<p>"  . $newsRow['autor_name'] .  "</p>";
 
@@ -174,6 +182,7 @@ if (isset($_POST["login"]) && isset($_POST["password"]) && !isset($_SESSION["adm
                         echo "<div class='newsBlock'>";
                         echo "<img class='newsImage' src='../img/" . $newsRow['image'] . "' alt=''>";
                         echo "<h2>" . "<a href='index.php?newsid=" . $newsRow['id'] . "'>" . $newsRow['title'] . "</a>" .  "</h2>";
+                        echo "<p>"  . $newsRow['shortdesc'] .  "</p>";
                         echo "<p>"  . $newsRow['date'] .  "</p>";
                         echo "<p>"  . $newsRow['autor_name'] .  "</p>";
 
